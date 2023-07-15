@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Drumstick",
+      "material": "Wood",
+      "length": 16,
+      "price": 9.99
+    },
+    {
+      "id": 2,
+      "name": "Brush",
+      "material": "Metal",
+      "length": 12,
+      "price": 12.99
+    },
+    {
+      "id": 3,
+      "name": "Hot Rods",
+      "material": "Bamboo",
+      "length": 15,
+      "price": 14.99
+    },
+    {
+      "id": 4,
+      "name": "Mallets",
+      "material": "Rubber",
+      "length": 10,
+      "price": 17.99
+    },
+    {
+      "id": 5,
+      "name": "Rods",
+      "material": "Plastic",
+      "length": 13,
+      "price": 7.99
+    },
+    {
+      "id": 6,
+      "name": "Broomstick",
+      "material": "Wood",
+      "length": 18,
+      "price": 11.99
+    },
+    {
+      "id": 7,
+      "name": "Whisk",
+      "material": "Metal",
+      "length": 14,
+      "price": 8.99
+    },
+    {
+      "id": 8,
+      "name": "Blasticks",
+      "material": "Plastic",
+      "length": 16,
+      "price": 19.99
+    },
+    {
+      "id": 9,
+      "name": "Rutes",
+      "material": "Bamboo",
+      "length": 14,
+      "price": 13.99
+    },
+    {
+      "id": 10,
+      "name": "Timpani Mallets",
+      "material": "Felt",
+      "length": 12,
+      "price": 24.99
+    },
+    {
+      "id": 11,
+      "name": "Fingers",
+      "material": "Silicone",
+      "length": 3,
+      "price": 5.99
+    },
+    {
+      "id": 12,
+      "name": "Sticks with Grips",
+      "material": "Wood",
+      "length": 16,
+      "price": 10.99
+    }
+  ]
+}
