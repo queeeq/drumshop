@@ -1,12 +1,11 @@
-import './App.css'
+import './App.scss'
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
-
-
   return (
-    <>
-        <h1>Drumshop</h1>
-    </>
+    <div className="App">
+      <Navbar/>
+    </div>
   )
 }
 
