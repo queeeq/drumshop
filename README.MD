@@ -6,6 +6,6 @@
 
 ### Tech stack:
 
-### Link to the deployed app:
+#### Link to the deployed app:
 
 #### Author:
