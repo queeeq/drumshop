@@ -1,9 +1,4 @@
-import {createClient} from '@supabase/supabase-js';
-import {useState} from "react";
-
-const supabaseUrl = 'https://tfrtnrdhfaseykpxujlx.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRmcnRucmRoZmFzZXlrcHh1amx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkzMzk1NjUsImV4cCI6MjAwNDkxNTU2NX0.PUkSp9-m15JcLR2DvtA0e11k74KzzYY0ytV8ZoEhlLM';
-const supabase = createClient(supabaseUrl, supabaseKey);
+import React, {useState} from 'react';
 
 const AddProductForm = ({onAddProduct}) => {
     const [formData, setFormData] = useState({
@@ -20,7 +15,11 @@ const AddProductForm = ({onAddProduct}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddProduct(formData);
+        const newProduct = {
+            id: generateUniqueId(), // Dodajemy unikalny ID do nowego produktu
+            ...formData,
+        };
+        onAddProduct(newProduct);
         setFormData({
             name: '',
             material: '',
@@ -29,52 +28,105 @@ const AddProductForm = ({onAddProduct}) => {
         });
     };
 
+    // Funkcja do generowania unikalnego ID (można zastosować różne metody, tutaj używamy prostej implementacji)
+    const generateUniqueId = () => {
+        return Math.random().toString(36).substr(2, 9);
+    };
+
     return (
-        <form
-            onSubmit={handleSubmit}
-            style={{display: 'flex', flexDirection: 'column', width: '50%', margin: 'auto', gap: 12}}
-        >
-            <label>
-                Name:
-                <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}/>
-            </label>
-            <label>
-                Material:
-                <input
-                    type="text"
-                    name="material"
-                    value={formData.material}
-                    onChange={handleChange}/>
-            </label>
-            <label>
-                Length:
-                <input
-                    type="text"
-                    name="length"
-                    value={formData.length}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                Price:
-                <input
-                    type="text"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                />
-            </label>
-            <button
-                type="submit"
-                style={{width: '50%', margin: 'auto'}}
-            >Add Product
-            </button>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit} style={styles.formContainer}>
+                <label style={styles.formLabel}>
+                    <span style={styles.labelText}>Name:</span>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        style={styles.formInput}
+                    />
+                </label>
+                <label style={styles.formLabel}>
+                    <span style={styles.labelText}>Material:</span>
+                    <input
+                        type="text"
+                        name="material"
+                        value={formData.material}
+                        onChange={handleChange}
+                        style={styles.formInput}
+                    />
+                </label>
+                <label style={styles.formLabel}>
+                    <span style={styles.labelText}>Length:</span>
+                    <input
+                        type="text"
+                        name="length"
+                        value={formData.length}
+                        onChange={handleChange}
+                        style={styles.formInput}
+                    />
+                </label>
+                <label style={styles.formLabel}>
+                    <span style={styles.labelText}>Price:</span>
+                    <input
+                        type="text"
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        style={styles.formInput}
+                    />
+                </label>
+                <button type="submit" style={styles.formButton}>
+                    Add Product
+                </button>
+            </form>
+        </div>
     );
 };
 
 export default AddProductForm;
+
+
+// Styles
+const styles = {
+    formContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '300px',
+        margin: '0 auto',
+        padding: '16px',
+    },
+    formLabel: {
+        marginBottom: '8px',
+        color: 'white',
+    },
+    labelText: {
+        marginRight: '8px',
+    },
+    formInput: {
+        padding: '4px 8px',
+        marginBottom: '16px',
+    },
+    formButton: {
+        padding: '8px 16px',
+        backgroundColor: '#2F8E55',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        borderRadius: '4px',
+        fontSize: '16px',
+        textDecoration: 'none',
+        margin: '10px',
+    },
+    formButton2: {
+        padding: '8px 16px',
+        backgroundColor: '#953244',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        borderRadius: '4px',
+        fontSize: '16px',
+        textDecoration: 'none',
+        margin: '10px',
+    },
+};
