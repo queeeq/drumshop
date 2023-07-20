@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
+
 
 const AddProductForm = ({onAddProduct}) => {
     const [formData, setFormData] = useState({
@@ -13,12 +14,14 @@ const AddProductForm = ({onAddProduct}) => {
         setFormData({...formData, [name]: value});
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const newProduct = {
-            id: generateUniqueId(), // Dodajemy unikalny ID do nowego produktu
+            id: generateUniqueId(),
             ...formData,
         };
+
+
         onAddProduct(newProduct);
         setFormData({
             name: '',
@@ -28,10 +31,10 @@ const AddProductForm = ({onAddProduct}) => {
         });
     };
 
-    // Funkcja do generowania unikalnego ID (można zastosować różne metody, tutaj używamy prostej implementacji)
     const generateUniqueId = () => {
-        return Math.random().toString(36).substr(2, 9);
+        return Math.floor(Math.random() * 1000000000);
     };
+
 
     return (
         <div>
@@ -87,7 +90,6 @@ const AddProductForm = ({onAddProduct}) => {
 export default AddProductForm;
 
 
-// Styles
 const styles = {
     formContainer: {
         display: 'flex',
